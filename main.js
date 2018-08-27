@@ -37,6 +37,31 @@ function tokenize(text) {
 	return tokens;
 }
 
+function InterpreterException(message) {
+	this.name = 'InterpreterException';
+	this.message = message;
+}
+
+function Interpreter(tokens) {
+	this.tokens = tokens;
+	this.pos = 0;
+}
+
+Interpreter.prototype.expect = function(lx) {
+	if(this.tokens[this.pos].lx === lx) {
+		this.pos++;
+	}
+	else {
+		throw new InterpreterException('Expected ' + lx + ' got ' + this.tokens[this.pos].lx + '.');
+	}
+}
+
+Interpreter.prototype.get = function() {
+	return this.tokens[this.pos];
+}
+
+Interpreter.prototype.
+
 function interpret(tokens){
 	interpretValue(tokens);
 	while(interpretOp(tokens)){
