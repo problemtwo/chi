@@ -1,0 +1,8 @@
+x = 1;
+df fun1() {rt x;}
+cl cls1{
+	df nw(){
+		my.x = x;
+	}
+}
+pr cls1.nw().x
